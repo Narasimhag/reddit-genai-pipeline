@@ -42,4 +42,4 @@ def extract_reddit_data(subreddit_name, num_posts=100):
 
 # Call the function with a specific subreddit
 if __name__ == "__main__":
-    extract_reddit_data('tollywood', num_posts=100)  
+    extract_reddit_data('books', num_posts=100)  
