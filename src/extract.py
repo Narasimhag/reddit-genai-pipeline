@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 import praw
 import pandas as pd
+import time
 
 # Load environment variables
 load_dotenv()
@@ -23,6 +24,7 @@ def extract_reddit_data(subreddit_name, num_posts=100):
     posts = []
     for submission in subreddit.new(limit=num_posts):
         post_data = {
+            'subreddit': subreddit_name,
             'title': submission.title,
             'score': submission.score,
             'id': submission.id,
@@ -42,4 +44,4 @@ def extract_reddit_data(subreddit_name, num_posts=100):
 
 # Call the function with a specific subreddit
 if __name__ == "__main__":
-    extract_reddit_data('books', num_posts=100)  
+    extract_reddit_data('genai', num_posts=100)
