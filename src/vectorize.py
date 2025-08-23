@@ -1,8 +1,6 @@
 # import modules
 import os
 import pandas as pd
-import numpy as np
-import pickle
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sentence_transformers import SentenceTransformer
 
