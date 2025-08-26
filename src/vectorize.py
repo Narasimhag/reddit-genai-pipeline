@@ -35,10 +35,12 @@ class Vectorizer:
         if self.method == "tfidf":
             X = self.vectorizer.fit_transform(df["selftext_clean"].fillna(""))
             tf_idf_df = pd.DataFrame(X.toarray(), columns=[f"tfidf_{i}" for i in range(X.shape[1])])
+            tf_idf_df["embeddings"] = tf_idf_df.values.tolist()
             return pd.concat([df.reset_index(drop=True), tf_idf_df], axis=1)
         elif self.method == "embeddings":
             X = self.vectorizer.encode(df["selftext_clean"].fillna("").to_list(), show_progress_bar=True)
             emb_df = pd.DataFrame(X, columns=[f"emb_{i}" for i in range(X.shape[1])])
+            emb_df["embeddings"] = emb_df.values.tolist()
             return pd.concat([df.reset_index(drop=True), emb_df], axis=1)
 
     def run(self):

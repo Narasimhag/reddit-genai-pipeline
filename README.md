@@ -1,5 +1,13 @@
-# reddit-genai-pipeline
-This repo builds a GenAI-powered Q&A system using Reddit data, showcasing DE + AI integration.
+## Project Roadmap
+This project aims to build an end-to-end GenAI powered pipeline using Reddit data.
+- [x] **Extract**: Collect raw Reddit data from the API.
+- [x] **Clean**: Preprocess text (normalize, remove noise, structure metadata).
+- [x] **Vectorize**: Generate TF-IDF features and sentence embeddings for text.
+- [x] **Store & Index**: Load vectors + metadata into a vector database.
+- [ ] **Retrieve**: Implement semantic search across Reddit posts using embeddings.
+- [ ] **Generate**: Build a simple RAG demo using an open-source LLM.
+- [ ] **Deploy**: Wrap the pipeline in a streamlist service.
+- [ ] **Optimize & Scale**: Experiment with batching, efficient storage and larger models.
 
 ### Step 1: Extract
 - Input: None
@@ -17,4 +25,9 @@ This repo builds a GenAI-powered Q&A system using Reddit data, showcasing DE + A
     - **Sentence embeddings** for dense, semantic features.
 - Both outputs are saved as Parquet files
 - Metadata columns are retained to allow future analysis and joinin with vectorized features.
+
+## Step 4: Index
+- Added `index.py` to store embeddings + metadata in pinecone.
+- Created `reddit-genai` index (cosine similarity, 384 dim).
+- Uploaded vectors and verified in Pinecone dashboard.
 
