@@ -9,12 +9,12 @@ This project aims to build an end-to-end GenAI powered pipeline using Reddit dat
 - [ ] **Deploy**: Wrap the pipeline in a streamlist service.
 - [ ] **Optimize & Scale**: Experiment with batching, efficient storage and larger models.
 
-### Step 1: Extract
+## Step 1: Extract
 - Input: None
 - Process: Use praw library to get top 100 posts of subreddits
 - Output: Create data files to location '/data/raw'
 
-### Step 2: Clean
+## Step 2: Clean
 - Input: Multiple raw Reddit CSVs from '/data/raw'
 - Process: Combines all files, cleans text (lowercasing, remove URLs/punctutation), adds features (text length, posting day)
 - Output: Single processed dataset in'/data/processed/reddit_posts_cleaned.csv'
