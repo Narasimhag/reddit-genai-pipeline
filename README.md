@@ -31,3 +31,7 @@ This project aims to build an end-to-end GenAI powered pipeline using Reddit dat
 - Created `reddit-genai` index (cosine similarity, 384 dim).
 - Uploaded vectors and verified in Pinecone dashboard.
 
+## Step 5: Retrieve
+- Once the embeddings are indexed in Pinecone, run queries against them
+- `retrive.py` script, converts the query results into a structured dataframe
+
