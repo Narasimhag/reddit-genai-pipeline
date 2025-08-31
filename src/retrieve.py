@@ -41,3 +41,4 @@ if __name__ == "__main__":
     results = query_pinecone(user_query, top_k=25)
     print("Query Results:")
     print(results)
+    results.to_parquet("data/retrieved/query_results.parquet", index=False)

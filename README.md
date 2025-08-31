@@ -4,10 +4,12 @@ This project aims to build an end-to-end GenAI powered pipeline using Reddit dat
 - [x] **Clean**: Preprocess text (normalize, remove noise, structure metadata).
 - [x] **Vectorize**: Generate TF-IDF features and sentence embeddings for text.
 - [x] **Store & Index**: Load vectors + metadata into a vector database.
-- [ ] **Retrieve**: Implement semantic search across Reddit posts using embeddings.
-- [ ] **Generate**: Build a simple RAG demo using an open-source LLM.
-- [ ] **Deploy**: Wrap the pipeline in a streamlist service.
-- [ ] **Optimize & Scale**: Experiment with batching, efficient storage and larger models.
+- [x] **Retrieve**: Implement semantic search across Reddit posts using embeddings.
+- [x] **Rerank & Search**: Re-rank retrieval results with a cross-encoder and return most relevant docs.
+- [ ] **Generate**: Feed top-ranked results into a GenAI model (LLaMA) for contextual Q&A
+- [ ] **Deploy**: Wrap the pipeline in a streamlit app.
+- [ ] **Optimize**: Experiment with batching, efficient storage and larger models.
+- [ ] **Scale**: Containerize with Docker + orchestrate with Prefect.
 
 ## Step 1: Extract
 - Input: None
@@ -34,4 +36,8 @@ This project aims to build an end-to-end GenAI powered pipeline using Reddit dat
 ## Step 5: Retrieve
 - Once the embeddings are indexed in Pinecone, run queries against them
 - `retrive.py` script, converts the query results into a structured dataframe
+
+## Step 6: Rerank
+- Rerank the results that are retrived using cross-encoder
+- `rerank.py` script builds a rerank class that ranks them using cross encoder, improving precision for recall.
 
