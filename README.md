@@ -37,7 +37,8 @@ This project aims to build an end-to-end GenAI powered pipeline using Reddit dat
 - Once the embeddings are indexed in Pinecone, run queries against them
 - `retrive.py` script, converts the query results into a structured dataframe
 
-## Step 6: Rerank
+## Step 6: Rerank & Search
 - Rerank the results that are retrived using cross-encoder
 - `rerank.py` script builds a rerank class that ranks them using cross encoder, improving precision for recall.
+- `search.py` -> integrates retriever + reranker into full pipeline
 
