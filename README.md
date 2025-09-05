@@ -1,4 +1,7 @@
-## Project Roadmap
+## Reddit GenAI Pipeline 🚀
+
+[![Badge showing status of Reddit GenAI Pipeline workflow on GitHub Actions. The badge displays the current build status such as passing or failing. The badge is located at the top of the project README, providing quick visual feedback about the health of the automated pipeline.](https://github.com/Narasimhag/reddit-genai-pipeline/actions/workflows/pipeline.yml/badge.svg)](https://github.com/Narasimhag/reddit-genai-pipeline/actions/workflows/pipeline.yml)
+
 This project aims to build an end-to-end GenAI powered pipeline using Reddit data.
 - [x] **Extract**: Collect raw Reddit data from the API.
 - [x] **Clean**: Preprocess text (normalize, remove noise, structure metadata).

@@ -2,7 +2,7 @@ name: Reddit GenAI Pipeline
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 9 * * *'
   workflow_dispatch:
 
 jobs:
@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
@@ -28,21 +28,21 @@ jobs:
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
           PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
         run: |
-          python extract.py
-          python transform.py
-          python vectorize.py
-          python index.py
+          python src/extract.py
+          python src/transform.py
+          python src/vectorize.py
+          python src/index.py
           echo "✅ Pipeline executed successfully."
 
       # save outputs for debugging
       - name: Upload cleaned data
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cleaned-data
           path: data/processed/reddit_posts_cleaned.csv
 
       - name: Upload vectorized data
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: vectorized-data
           path: data/vectorized/*.parquet
