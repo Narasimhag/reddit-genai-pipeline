@@ -42,3 +42,34 @@ This project aims to build an end-to-end GenAI powered pipeline using Reddit dat
 - `rerank.py` script builds a rerank class that ranks them using cross encoder, improving precision for recall.
 - `search.py` -> integrates retriever + reranker into full pipeline
 
+## 🚀 Orchestration & Scheduling
+
+This project now runs as a **scheduled pipeline** using Github Actions.
+
+### Workflow
+- **Trigger:** Everyday at 9 AM UTC (configurable via cron)
+- **Steps:**
+    1. Fecth new Reddit posts (`extract.py`)
+    2. Clean text (`transform.py`)
+    3. Vectorize (TF-IDF + Embeddigs) (`vectorize.py`)
+    4. Upsert into Pinecone index (`index.py`)
+
+### Outputs
+- Artifacts: Cleaned and vectorized files are uploaded to each workflow run
+- Pincecone: New embeddings are automatically indexed
+
+### Secrets Required
+Store these in your Github repo under **Settings --> Secrets --> Actions**:
+- `CLIENT_ID`
+- `CLIENT_SECRET`
+- `PINECONE_API_KEY`
+
+### Running Locally
+You can still run the pipeline manually:
+```bash
+python src/extract.py
+python src/transform.py
+python src/vectorize.py
+python src/index.py
+```
+

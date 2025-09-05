@@ -32,5 +32,30 @@ jobs:
           python transform.py
           python vectorize.py
           python index.py
-          echo ""
-          
+          echo "✅ Pipeline executed successfully."
+
+      # save outputs for debugging
+      - name: Upload cleaned data
+        uses: actions/upload-artifact@v3
+        with:
+          name: cleaned-data
+          path: data/processed/reddit_posts_cleaned.csv
+
+      - name: Upload vectorized data
+        uses: actions/upload-artifact@v3
+        with:
+          name: vectorized-data
+          path: data/vectorized/*.parquet
+
+      # save logs (stdout and stderr)
+      - name: Upload logs
+        if: always()
+        run: |
+          mkdir -p logs
+          dmesg > logs/system.log || true
+        continue-on-error: true
+      - name: Upload logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: logs
+          path: logs/
