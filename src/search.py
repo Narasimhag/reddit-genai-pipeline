@@ -1,5 +1,5 @@
-from rerank import Reranker
-from retrieve import Retriever
+from .rerank import Reranker
+from .retrieve import Retriever
 
 class Search:
     def __init__(self, index_name="reddit-genai", top_k_retrieve=50, top_k_rerank=5):
