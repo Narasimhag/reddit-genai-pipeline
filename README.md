@@ -45,6 +45,10 @@ This project aims to build an end-to-end GenAI powered pipeline using Reddit dat
 - `rerank.py` script builds a rerank class that ranks them using cross encoder, improving precision for recall.
 - `search.py` -> integrates retriever + reranker into full pipeline
 
+## Step 7: Generate
+- The reranked docs are used by the OpenAI model to generate responses for the query.
+- Uses only the retireved docs to prevent hallucination.
+
 ## Step 8: 🚀 Interactive Search App
 
 A Streamlit-based app to explore the pipeline end-to-end.

@@ -1,10 +1,12 @@
 from .rerank import Reranker
 from .retrieve import Retriever
+from .generate import Generator
 
 class Search:
     def __init__(self, index_name="reddit-genai", top_k_retrieve=50, top_k_rerank=5):
         self.retriever = Retriever(index_name=index_name)
         self.reranker = Reranker()
+        self.generator = Generator()
         self.top_k_retrieve = top_k_retrieve
         self.top_k_rerank = top_k_rerank
 
@@ -15,7 +17,9 @@ class Search:
         # Step 2: Rerank the retrieved documents
         reranked_docs = self.reranker.rerank(query, retrieved_docs, top_k=self.top_k_rerank)
 
-        return reranked_docs
+        answer = self.generator.generate_answer(query, reranked_docs['selftext_clean'].to_list())
+
+        return answer
 
 if __name__ == "__main__":
     user_query = input("Enter your search query: ")
