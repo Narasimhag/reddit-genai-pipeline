@@ -9,7 +9,7 @@ This project aims to build an end-to-end GenAI powered pipeline using Reddit dat
 - [x] **Store & Index**: Load vectors + metadata into a vector database.
 - [x] **Retrieve**: Implement semantic search across Reddit posts using embeddings.
 - [x] **Rerank & Search**: Re-rank retrieval results with a cross-encoder and return most relevant docs.
-- [ ] **Generate**: Feed top-ranked results into a GenAI model (LLaMA) for contextual Q&A
+- [x] **Generate**: Feed top-ranked results into a GenAI model (LLaMA) for contextual Q&A
 - [x] **Deploy**: Wrap the pipeline in a streamlit app.
 - [ ] **Optimize**: Experiment with batching, efficient storage and larger models.
 - [ ] **Scale**: Containerize with Docker + orchestrate with Prefect.
@@ -46,12 +46,14 @@ This project aims to build an end-to-end GenAI powered pipeline using Reddit dat
 - `search.py` -> integrates retriever + reranker into full pipeline
 
 ## Step 7: Generate
-- The reranked docs are used by the OpenAI model to generate responses for the query.
+- The reranked docs are used by the Ollama mistral model, run locally to generate responses for the query.
 - Uses only the retireved docs to prevent hallucination.
 
 ## Step 8: 🚀 Interactive Search App
 
 A Streamlit-based app to explore the pipeline end-to-end.
+
+![Reddit GenAI Pipeline Screenshot](images/demo_1.png)
 
 ### Run Locally
 ```bash

@@ -44,4 +44,6 @@ def extract_reddit_data(subreddit_name, num_posts=100):
 
 # Call the function with a specific subreddit
 if __name__ == "__main__":
-    extract_reddit_data('genai', num_posts=100)
+    subreddit_to_extract = ['genai', 'MachineLearning', 'dataengineering', 'datascience', 'learnmachinelearning', 'tollywood', 'SunrisersHyderabad', 'artificial', 'technology', 'deloitte', 'meta']
+    for subreddit in subreddit_to_extract:
+        extract_reddit_data(subreddit, num_posts=500)
