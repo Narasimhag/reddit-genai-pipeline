@@ -1,33 +1,16 @@
-import os
-from openai import OpenAI
+from .llm_utils import LLMProvider
 
-class Generator:
-    def __init__(self):
-        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-        self.model = "gpt-4o-mini"
-        self.max_tokens = 200
-        self.temperature = 0.0
-    
-    def generate_answer(self, query, docs):
-        context = "\n\n".join([doc[:500] for doc in docs[:3]])
+class Generate:
+    def __init__(self, max_docs = 5):
+        self.max_docs = max_docs
+        self.llm_provider = LLMProvider()
 
-        prompt = f"""
-        Summarize the following context in relation to the query.
+    def summarize(self, results):
+        text = "\n\n".join([result["text"] for result in results[:self.max_docs]])
+        return self.llm_provider.summarize_text(text)
 
-        Query: {query}
-
-        Context: {context}
-
-        Please provide a concise summary based on the context and query (max 3 sentences).
-        """
-
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=[
-                {"role": "user", "content": prompt}
-            ],
-            max_tokens=self.max_tokens,
-            temperature=self.temperature
-        )
-
-        return response.choices[0].message.content.strip()
+    def answer(self, question, results):
+        # print(results)
+        context = "\n\n".join([result["text"] for result in results[:self.max_docs]])
+        prompt = f"Answer the following question based on the context provided:\n\nQuestion:\n{question}\n\nContext:\n{context}"
+        return self.llm_provider.summarize_text(context,prompt)
