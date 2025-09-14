@@ -16,7 +16,7 @@ if query:
     with st.spinner("Searching..."):
         results = search_engine.search(query)
         # results["selftext_clean"] = results["selftext_clean"].fillna("").str.slice(0, 250) + "..."
-        st.subheader("Answer from OpenAI:")
+        st.subheader("Answer from LLM:")
         st.write(results)
         # st.dataframe(
         #     results[["subreddit", "title", "selftext_clean", "created_day", "score"]].reset_index(drop=True),
