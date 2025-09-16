@@ -16,4 +16,7 @@ if query:
     with st.spinner("Searching..."):
         results = search_engine.search(query)
         st.subheader("Answer from LLM:")
-        st.write(results)
+        think = results.split("</think>")[0].replace("<think>", "").strip()
+        answer = results.split("</think>")[-1].strip()
+        st.write(answer)
+        st.expander("LLM's Thought Process", expanded=False).write(think)

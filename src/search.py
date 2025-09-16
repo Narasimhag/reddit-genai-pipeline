@@ -3,7 +3,7 @@ from .retrieve import Retriever
 from .generate import Generate
 
 class Search:
-    def __init__(self, index_name="reddit-genai", top_k_retrieve=50, top_k_rerank=5):
+    def __init__(self, index_name="reddit-genai", top_k_retrieve=20, top_k_rerank=5):
         self.retriever = Retriever(index_name=index_name)
         self.reranker = Reranker()
         self.generator = Generate(25)
@@ -26,7 +26,7 @@ class Search:
 
 if __name__ == "__main__":
     user_query = input("Enter your search query: ")
-    search = Search(top_k_rerank=20)
+    search = Search(top_k_rerank=10)
     results = search.search(user_query)
     print("Search Results:")
     print(results)

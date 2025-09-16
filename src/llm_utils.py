@@ -26,9 +26,9 @@ class LLMProvider:
 
         elif self.provider == "ollama":
             response = ollama.chat(
-                model=config.get("ollama_model", "mistral"),
+                model=config.get("ollama_model", "deepseek-r1"),
                 messages=[
-                    {"role": "system", "content": system_prompt},
+                    {"role": "system", "content": "You are a QA assistant. Answer the question ONLY using the provided context. If the context is irrelevant or empty, say ' I don't have enough information from the data. Do not summarize all context, extract only what answers the query."},
                     {"role": "user", "content": text}
                 ]
             )
