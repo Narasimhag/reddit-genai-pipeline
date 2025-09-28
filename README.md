@@ -12,7 +12,7 @@ This project aims to build an end-to-end GenAI powered pipeline using Reddit dat
 - [x] **Generate**: Feed top-ranked results into a GenAI model (LLaMA) for contextual Q&A
 - [x] **Deploy**: Wrap the pipeline in a streamlit app.
 - [x] **Evaluate and Optimize**: Experiment with batching, efficient storage and larger models.
-- [ ] **Scale**: Containerize with Docker + orchestrate with Prefect.
+
 
 ## Step 1: Extract
 - Input: None
